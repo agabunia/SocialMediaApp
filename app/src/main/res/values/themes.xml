@@ -1,0 +1,30 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.SocialMediaApp" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="Theme.SocialMediaApp" parent="Base.Theme.SocialMediaApp" />
+
+    <!--    bottom navigation style for light mode-->
+    <style name="BottomNavigationTheme" parent="Theme.MaterialComponents">
+        <item name="android:navigationBarColor">@style/Widget.BottomNavigationView</item>
+    </style>
+
+    <style name="Widget.BottomNavigationView" parent="Widget.Design.BottomNavigationView">
+        <item name="android:background">@android:color/transparent</item>
+    </style>
+
+    <style name="NavigationBackground">
+        <item name="android:background">@drawable/bottom_navigation_shape_light</item>
+        <item name="itemIconTint">@drawable/bottom_navigation_item_selector_light</item>
+        <item name="itemTextColor">@drawable/bottom_navigation_item_selector_light</item>
+    </style>
+
+    <!--    light mode screen background color       -->
+    <style name="screenBackground">
+        <item name="android:background">@drawable/background_color_light</item>
+    </style>
+
+</resources>
