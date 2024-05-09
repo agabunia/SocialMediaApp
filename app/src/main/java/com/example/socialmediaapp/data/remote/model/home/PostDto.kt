@@ -25,7 +25,7 @@ data class PostDto(
         val firstName: String,
         @Json(name = "last_name")
         val lastName: String,
-        @Json(name = "profile_image")
+        @Json(name = "profile")
         val profileImage: String?,
         @Json(name = "gender")
         val gender: String

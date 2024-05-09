@@ -1,11 +1,15 @@
 package com.example.socialmediaapp.presentation.adapter.home
 
+import android.util.Log.d
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.example.socialmediaapp.R
 import com.example.socialmediaapp.databinding.PostLayoutBinding
+import com.example.socialmediaapp.presentation.extentions.loadImage
+import com.example.socialmediaapp.presentation.extentions.loadImageInt
 import com.example.socialmediaapp.presentation.model.home.Post
 
 class PostRecyclerAdapter : ListAdapter<Post, PostRecyclerAdapter.PostViewHolder>(PostDiffUtil()) {
@@ -36,7 +40,20 @@ class PostRecyclerAdapter : ListAdapter<Post, PostRecyclerAdapter.PostViewHolder
             post = currentList[adapterPosition]
 
             with(binding) {
+                tvOwnerFirstName.text = post.owner.firstName
+                tvOwnerLastName.text = post.owner.lastName
+                tvPostTime.text = post.postDate.toString()
                 tvTitle.text = post.title
+                tvLikesCount.text = post.likes.toString()
+                tvCommentsCount.text = post.commentCount.toString()
+
+                if (post.owner.profileImage != null) {
+                    ivOwnerImage.loadImage(post.owner.profileImage)
+                } else if (post.owner.gender == "male") {
+                    ivOwnerImage.loadImageInt(R.drawable.male_avatar)
+                } else {
+                    ivOwnerImage.loadImageInt(R.drawable.male_avatar)
+                }
             }
         }
     }
