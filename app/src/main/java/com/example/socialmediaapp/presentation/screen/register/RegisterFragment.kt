@@ -1,24 +1,30 @@
-package com.example.socialmediaapp.presentation.screen.splash
+package com.example.socialmediaapp.presentation.screen.register
 
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
-import com.example.socialmediaapp.databinding.FragmentSplashBinding
+import com.example.socialmediaapp.databinding.FragmentRegisterBinding
 import com.example.socialmediaapp.presentation.base.BaseFragment
+import com.example.socialmediaapp.presentation.event.register.RegisterEvent
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class SplashFragment : BaseFragment<FragmentSplashBinding>(FragmentSplashBinding::inflate) {
-    private val viewModel: SplashViewModel by viewModels()
+class RegisterFragment : BaseFragment<FragmentRegisterBinding>(FragmentRegisterBinding::inflate) {
+    private val viewModel: RegisterViewModel by viewModels()
 
     override fun bind() {
     }
 
     override fun bindListeners() {
+        binding.apply {
+            btnBackToLogin.setOnClickListener {
+                viewModel.onEvent(event = RegisterEvent.BackToLogin)
+            }
+        }
     }
 
     override fun bindObservers() {
@@ -31,17 +37,14 @@ class SplashFragment : BaseFragment<FragmentSplashBinding>(FragmentSplashBinding
         }
     }
 
-    private fun handleUIEvent(event: SplashViewModel.SplashUIEvent) {
+    private fun handleUIEvent(event: RegisterViewModel.RegisterUIEvent) {
         when (event) {
-            is SplashViewModel.SplashUIEvent.NavigateToLogin -> navigateToLogin()
-            is SplashViewModel.SplashUIEvent.NavigateToHome -> navigateToHome()
+            is RegisterViewModel.RegisterUIEvent.NavigateToLogin -> navigateToLogin()
         }
     }
 
     private fun navigateToLogin() {
-        findNavController().navigate(SplashFragmentDirections.actionSplashFragmentToLoginFragment())
+        findNavController().navigate(RegisterFragmentDirections.actionRegisterFragmentToLoginFragment())
     }
-
-    private fun navigateToHome() {}
 
 }

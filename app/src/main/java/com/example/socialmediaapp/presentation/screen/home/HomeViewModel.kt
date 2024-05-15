@@ -33,7 +33,7 @@ class HomeViewModel @Inject constructor(
         when (event) {
             is HomeEvent.GetStories -> getStories()
             is HomeEvent.GetPosts -> getPosts()
-                is HomeEvent.ResetErrorMessage -> errorMessage(message = null)
+            is HomeEvent.ResetErrorMessage -> errorMessage(message = null)
         }
     }
 
