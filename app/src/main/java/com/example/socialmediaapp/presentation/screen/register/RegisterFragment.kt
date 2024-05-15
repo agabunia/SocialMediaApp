@@ -24,6 +24,17 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>(FragmentRegisterB
             btnBackToLogin.setOnClickListener {
                 viewModel.onEvent(event = RegisterEvent.BackToLogin)
             }
+
+            btnCreateAccount.setOnClickListener {
+                viewModel.onEvent(
+                    event = RegisterEvent.Register(
+                        email = etEmailInput.text.toString(),
+                        username = etUsernameInput.text.toString(),
+                        password = etPasswordInput.text.toString(),
+                        repeatedPassword = etPasswordRepeatInput.text.toString()
+                    )
+                )
+            }
         }
     }
 

@@ -3,6 +3,7 @@ package com.example.socialmediaapp.di
 import com.example.socialmediaapp.data.common.HandleResponse
 import com.example.socialmediaapp.data.remote.service.home.PostService
 import com.example.socialmediaapp.data.remote.service.home.StoryService
+import com.google.firebase.auth.FirebaseAuth
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import dagger.Module
@@ -21,6 +22,10 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object AppModule {
+
+    @Provides
+    @Singleton
+    fun provideFirebaseAuth(): FirebaseAuth = FirebaseAuth.getInstance()
 
     private const val BASE_URL = "https://run.mocky.io/"
 
